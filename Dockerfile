@@ -17,6 +17,7 @@ RUN apt-get update \
         ssh-client \
         unzip \
         iputils-ping \
+        gettext-base \
     && rm -rf /var/lib/apt/lists/*
 
 # Install nvm with node and npm
