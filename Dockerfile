@@ -4,20 +4,20 @@ MAINTAINER Vimukthi Jayabahu
 # Install base dependencies
 RUN apt-get update \
     && apt-get install -y \
-        software-properties-common \
-        build-essential \
-        wget \
-        xvfb \
-        curl \
-        git \
-        mercurial \
-        maven \
-        openjdk-8-jdk \
-        ant \
-        ssh-client \
-        unzip \
-        iputils-ping \
-        gettext-base \
+    software-properties-common \
+    build-essential \
+    wget \
+    xvfb \
+    curl \
+    git \
+    mercurial \
+    maven \
+    openjdk-8-jdk \
+    ant \
+    ssh-client \
+    unzip \
+    iputils-ping \
+    gettext-base \
     && rm -rf /var/lib/apt/lists/*
 
 # Install nvm with node and npm
@@ -51,6 +51,8 @@ ENV PATH=$NVM_DIR:$NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 RUN mkdir -p /opt/build \
     && sed -i '/[ -z \"PS1\" ] && return/a\\ncase $- in\n*i*) ;;\n*) return;;\nesac' /root/.bashrc \
     && useradd --create-home --shell /bin/bash --uid 1000 pipelines
+
+RUN npm install -g yarn
 
 WORKDIR /opt/build
 ENTRYPOINT /bin/bash
