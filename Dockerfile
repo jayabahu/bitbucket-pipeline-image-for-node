@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-MAINTAINER Vimukthi Jayabahu
+LABEL MAINTAINER="Vimukthi Jayabahu" 
 
 # Install base dependencies
 RUN apt-get update \
@@ -21,9 +21,9 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Install nvm with node and npm
-ENV NODE_VERSION=10.20.0 \
+ENV NODE_VERSION=14.13.1 \
     NVM_DIR=/root/.nvm \
-    NVM_VERSION=0.35.1
+    NVM_VERSION=0.35.2
 
 RUN curl https://raw.githubusercontent.com/creationix/nvm/v$NVM_VERSION/install.sh | bash \
     && . $NVM_DIR/nvm.sh \
